@@ -32,10 +32,7 @@ TEST(Objects, InitialValues)
 TEST(Objects, Transforms)
 {
 	Object object;
-	object.position().x = 10;
-	object.position().y = 20;
-	object.position().z = 30;
-
+	object.setPosition(glm::vec3(10, 20, 30));
 	glm::mat4 transform = object.getTransform();
 	glm::vec3 v(0);
 	v = glm::vec3(transform * glm::vec4(v, 1));

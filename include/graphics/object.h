@@ -13,4 +13,8 @@ public:
 	glm::vec3 &position();
 	glm::vec3 &scale();
 	glm::vec3 &rotation();
+
+	void setPosition(const glm::vec3 &newPosition);
+	void setRotation(const glm::vec3 &newRotation);
+	void setScale(const glm::vec3 &newScale);
 };
