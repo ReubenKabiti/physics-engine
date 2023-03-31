@@ -12,7 +12,7 @@ Shader::Shader()
 					  "uniform mat4 model;"
 					  "void main()"
 					  "{"
-					  " gl_Position = vec4(aPos, 1);"
+					  " gl_Position = VP * model * vec4(aPos, 1);"
 					  "}";
 	const char *fss = "#version 330 core\n"
 					  "out vec4 color;"

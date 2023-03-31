@@ -20,7 +20,7 @@ PerspectiveCamera::~PerspectiveCamera()
 {
 }
 
-glm::mat4 PerspectiveCamera::getVP()
+const glm::mat4 &PerspectiveCamera::getVP()
 {
 	glm::mat4 view = glm::lookAt(
 			m_position,
@@ -35,7 +35,8 @@ glm::mat4 PerspectiveCamera::getVP()
 			m_far
 	);
 
-	return view * proj;
+	m_VP = view * proj;
+	return m_VP;
 }
 
 void PerspectiveCamera::lookAt(const glm::vec3 pos)

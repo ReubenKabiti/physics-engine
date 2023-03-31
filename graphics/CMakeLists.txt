@@ -19,4 +19,5 @@ target_link_libraries(
 	-lGL
 	-lGLEW
 	-lglfw3
+	-lX11
 )

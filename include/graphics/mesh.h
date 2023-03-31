@@ -9,7 +9,7 @@ protected:
 	uint32_t m_vao, m_vbo, m_ebo;
 
 public:
-	~Mesh();
+	virtual ~Mesh(){}
 
 	void render();
 };

@@ -44,7 +44,9 @@ void GraphicsApplication::mainLoop()
 		glfwPollEvents();
 		m_mainScene->onUpdate(delta);
 
-		Shader::get()->setMatrix("VP", m_mainCamera->getVP());
+		glm::mat4 VP = m_mainCamera->getVP();
+
+		Shader::get()->setMatrix("VP", VP);
 
 		m_mainScene->onRender();
 		glfwSwapBuffers(m_window);

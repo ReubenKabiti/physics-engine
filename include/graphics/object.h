@@ -4,7 +4,7 @@
 class Object
 {
 protected:
-	glm::vec3 m_position, m_scale, m_rotation;
+	glm::vec3 m_position, m_rotation, m_scale;
 public:
 	Object();
 	virtual ~Object() {}
