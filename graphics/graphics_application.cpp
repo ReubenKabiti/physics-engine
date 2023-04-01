@@ -21,6 +21,7 @@ GraphicsApplication::GraphicsApplication(
 	glfwMakeContextCurrent(m_window);
 
 	glewInit();
+	glEnable(GL_DEPTH_TEST);
 
 	Shader::init();
 	m_mainScene->onCreate();
@@ -47,7 +48,7 @@ void GraphicsApplication::mainLoop()
 		glm::mat4 VP = m_mainCamera->getVP();
 
 		Shader::get()->setMatrix("VP", VP);
-
+		glClear(GL_DEPTH_BUFFER_BIT);
 		m_mainScene->onRender();
 		glfwSwapBuffers(m_window);
 		delta = glfwGetTime() - frameStartTime;

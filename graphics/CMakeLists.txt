@@ -5,6 +5,7 @@ add_library(
 	mesh.cpp
 	shader.cpp
 	graphics_application.cpp
+	cube.cpp
 )
 
 target_include_directories(

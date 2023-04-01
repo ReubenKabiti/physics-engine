@@ -1,61 +1,43 @@
 #include "graphics_application.h"
 #include "perspective_camera.h"
+#include "cube.h"
+
 #include <cmath>
 
-class Triangle : public Mesh
-{
-public:
-	Triangle()
-	{
-		float vertices[] = {
-			0, 0.5, -1.0f,
-			-0.5, -0.5, -1.0f,
-			0.5, -0.5, -1.0f
-		};
-
-		uint32_t indices[] = {
-			0, 1, 2
-		};
-		m_nIndices = 3;
-
-		glGenVertexArrays(1, &m_vao);
-		glBindVertexArray(m_vao);
-		
-		glGenBuffers(1, &m_vbo);
-		glGenBuffers(1, &m_ebo);
-
-		glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ebo);
-		
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
-		glEnableVertexAttribArray(0);
-	}
-};
+/* class Triangle : public Mesh */
+/* { */
+/* public: */
+/* 	Tri */
+/* }; */
 
 class SimpleScene : public Scene
 {
 private:
-
-	Triangle *m_triangle;
+	std::shared_ptr<Cube> m_cube;
 public:
 	void onCreate()
 	{
 		glClearColor(0, 0, 0, 1);
-		m_triangle = new Triangle;
+		m_cube = std::make_shared<Cube>();
+		m_cube->init();
+		m_cube->position().z = -5;
+		m_cube->setOrigin(glm::vec3(-0.5, -0.5, 0.5));
+	}
+
+	void onUpdate(float delta)
+	{
+		m_cube->rotation().x += M_PI / 4 * delta;
+		m_cube->rotation().y += M_PI / 4 * delta;
 	}
 
 	void onRender()
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
-		m_triangle->render();
+		m_cube->render();
 	}
 	
 	void onDestroy()
 	{
-		delete m_triangle;
 	}
 };
 
