@@ -6,6 +6,7 @@ add_library(
 	shader.cpp
 	graphics_application.cpp
 	cube.cpp
+	sphere.cpp
 )
 
 target_include_directories(
