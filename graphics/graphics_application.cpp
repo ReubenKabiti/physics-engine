@@ -1,4 +1,5 @@
 #include "graphics_application.h"
+#include "shader.h"
 
 GraphicsApplication::GraphicsApplication(
 			std::shared_ptr<Scene> mainScene,

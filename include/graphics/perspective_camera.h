@@ -1,14 +1,28 @@
 #pragma once
 #include "camera.h"
 
+/*! \brief PerspectiveCamera is a camera that uses perspective projection */
+
 class PerspectiveCamera : public Camera
 {
 
 private:
-	float m_fov, m_aspect, m_near, m_far;
-	glm::vec3 m_upVec, m_lookAt{0};
+	float m_fov;
+	float m_aspect;
+	float m_near;
+	float m_far;
+
+	glm::vec3 m_upVec;
+	glm::vec3 m_lookAt{0};
 
 public:
+	/*!
+	 * @param fov the field of view
+	 * @param aspect the aspect ratio
+	 * @param upVec the upward vector
+	 * @param near the distance to the near plane
+	 * @param far the distance to the far plane
+	 */
 	PerspectiveCamera(
 			float fov,
 			float aspect,
@@ -19,7 +33,11 @@ public:
 
 	~PerspectiveCamera();
 
+	/*! documented in Camera */
 	virtual const glm::mat4 &getVP() override;
 
+	/*! \brief set the look at direction of the camera 
+	 * @param pos the position to look at
+	 */
 	void lookAt(const glm::vec3 pos);
 };

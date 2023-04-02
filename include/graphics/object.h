@@ -1,7 +1,7 @@
 #pragma once
 #include <glm/glm.hpp>
 
-/*! the class from which all objects in a scene must inherit */
+/*! \brief the class from which all objects in a scene must inherit */
 
 class Object
 {
@@ -10,8 +10,8 @@ protected:
 	glm::vec3
 		m_position /*! the position of the object */, 
 		m_origin /*! the origin of the object */,
-		m_rotation, /*! the rotation of the object */
-		m_scale; /*! the scale of the object */
+		m_rotation /*! the rotation of the object */,
+		m_scale /*! the scale of the object */;
 public:
 	Object();
 	virtual ~Object() {}
