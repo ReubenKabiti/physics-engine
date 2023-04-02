@@ -57,7 +57,7 @@ int main()
 	GraphicsApplication(
 			std::make_shared<SimpleScene>(),
 			camera,
-			800, 600, "very simple example"
+			800, 600, "Very simple example"
 	);
 
 	return 0;
